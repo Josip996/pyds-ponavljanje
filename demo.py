@@ -6,4 +6,10 @@ b = 3
 c = a + b
 print(c)
 
-# Komentari
+
+
+import requests
+
+
+request = requests.get('https://jsonplaceholder.typicode.com/users')
+request
