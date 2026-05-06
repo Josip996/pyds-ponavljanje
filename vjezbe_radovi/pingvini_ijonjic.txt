@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df=pd.read_csv('data/penguins.csv')
+df = df.dropna(subset=['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g'], how='all')
+print(df.iloc[:,[0,2,3,4,5]].groupby(by='species',as_index=False).mean())
+df.iloc[:,[0,2,3,4,5]].groupby(by='species',as_index=False).std().mean(
+    kind='bar',
+    x='species',
+    y=['bill_length_mm','bill_depth_mm','flipper_length_mm','body_mass_g'],
+    figsize=(10,5),
+    style=['o--b','o--g','o--r','o--y'],
+    legend=True,
+    title='Pingvini',
+    subplots=True,
+    layout=[2,2])
+plt.show()
